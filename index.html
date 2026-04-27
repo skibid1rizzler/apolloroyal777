@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>APOLLO ROYAL</title>
-<link rel="stylesheet" href="styles (2).css">
+<link rel="stylesheet" href="styles.css">
 <script src="script.js"></script>
 </head>
 <body>
@@ -30,7 +30,9 @@
       <h1 class="hero-title">Welcome to Apollo Royal</h1>
       <p class="hero-subtitle">Where Gods Play for Glory</p>
       <div class="hero-buttons">
-        <button class="hero-btn primary" onclick="gotoScreen('slotsScreen')">Start Playing</button>
+        <button class="hero-btn primary" onclick="document.querySelector('.games-section').scrollIntoView({behavior:'smooth'}); snd && snd.click && snd.click();">
+  Start Playing
+</button>
         <button class="hero-btn secondary" onclick="scrollToVIP()">Explore VIP</button>
       </div>
     </div>
