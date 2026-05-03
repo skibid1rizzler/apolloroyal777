@@ -548,11 +548,27 @@
   }
 
   function bjClear() {
-    if (bjPhase === 'play') return;
-    bjBet = 0;
-    updateBjBet();
-    snd.click();
-  }
+  if (bjPhase === 'play') return;
+
+ 
+  bjBet = 0;
+  playerCards = [];
+  dealerCards = [];
+  playerScore = 0;
+  dealerScore = 0;
+
+  bjPhase = 'bet';
+
+  // clear UI
+  byId('player-hand').innerHTML = '';
+  byId('dealer-hand').innerHTML = '';
+  byId('result').textContent = '';
+
+  updateBjBet();
+  setBjPhase('bet');
+
+  snd.click();
+}
 
   function bjDeal() {
     if (bjBet <= 0) {
@@ -1176,4 +1192,6 @@
   crashReset();
   diceReset();
   refreshAllBals(false);
+
+  
 });

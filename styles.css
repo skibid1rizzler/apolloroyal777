@@ -32,13 +32,82 @@ body::before{
 .screen{display:none;position:relative;z-index:60;min-height:100vh;flex-direction:column;}
 .screen.active{display:flex;}
 
-.site-header{
-  text-align:center;padding:16px 20px 12px;margin-top:9px;
-  border-bottom:2px solid var(--gold2);
-  background:linear-gradient(180deg,rgba(22,11,0,.99),rgba(0,0,0,.88));
-  box-shadow:0 4px 40px rgba(255,215,0,.12);
+.site-header {
+  padding: 18px 10px 16px;
+  background: linear-gradient(180deg, #1a0f00, #0a0500);
+  border-bottom: 4px solid var(--gold);
+  display: flex;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 6px 35px rgba(255, 215, 0, 0.2);
 }
-.logo-img{max-width:min(420px,82vw);height:auto;display:block;margin:0 auto;
+
+.logo-frame {
+  position: relative;
+  padding: 8px;
+  background: linear-gradient(145deg, #3a2a10, #1a1205);
+  border: 3px solid var(--gold);
+  border-radius: 12px;
+  box-shadow: 
+    0 0 30px rgba(255, 215, 0, 0.6),
+    inset 0 0 25px rgba(0, 0, 0, 0.8),
+    0 0 60px rgba(255, 180, 0, 0.4);
+}
+
+.logo-frame::before,
+.logo-frame::after {
+  content: '';
+  position: absolute;
+  border: 2px solid var(--gold);
+  pointer-events: none;
+}
+
+.logo-frame::before {
+  inset: -8px;
+  border-radius: 18px;
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.5);
+}
+
+.logo-frame::after {
+  inset: -14px;
+  border-radius: 22px;
+  opacity: 0.6;
+}
+
+/* Epic shine animation */
+.logo-frame::after {
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.4) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: frameShine 6s linear infinite;
+}
+
+.logo-img {
+  max-width: min(60px, 14vw); 
+  display: block;
+  filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.9));
+  transition: all 0.4s ease;
+}
+
+.logo-img:hover {
+  transform: scale(1.06);
+  filter: drop-shadow(0 0 35px rgba(255, 215, 0, 1));
+}
+
+@keyframes frameShine {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+.logo-frame {
+  transform: scale(0.75); /* було 1, стане менше */
+  transform-origin: center;
+}
+.logo-img {max-width: 150px;height:auto;display:block;margin:0 auto;
   filter:drop-shadow(0 0 20px rgba(255,215,0,.6)) drop-shadow(0 0 50px rgba(255,165,0,.28));
   animation:logoGlow 2.8s ease-in-out infinite alternate;}
 @keyframes logoGlow{
@@ -75,32 +144,88 @@ body::before{
   clip-path:polygon(4px 0%,calc(100% - 4px) 0%,100% 4px,100% calc(100% - 4px),calc(100% - 4px) 100%,4px 100%,0% calc(100% - 4px),0% 4px);}
 .bal-fill{height:100%;background:linear-gradient(90deg,#660000,#cc0000 40%,#ffd700 80%,#fff9c4);transition:width .5s cubic-bezier(.4,0,.2,1);box-shadow:0 0 10px rgba(255,215,0,.5);}
 .bal-right{display:flex;flex-direction:column;align-items:flex-end;}
-.nav-menu{
-  display:flex;gap:0;border-bottom:2px solid var(--gold2);
-  background:linear-gradient(180deg,rgba(15,8,0,.99),rgba(0,0,0,.95));
-  position:sticky;top:9px;z-index:49;overflow-x:auto;
+.nav-menu {
+  display: flex;
+  background: linear-gradient(180deg, #1a1200, #0a0600);
+  border-bottom: 3px solid var(--gold);
+  box-shadow: 0 4px 20px rgba(255, 215, 0, 0.15);
+  overflow-x: auto;
+  padding: 6px 0;
+  position: sticky;
+  top: 9px;
+  z-index: 100;
+  scrollbar-width: none;
 }
-.nav-menu::-webkit-scrollbar{display:none;}
-.nav-btn{
-  flex:1;min-width:90px;
-  background:none;border:none;cursor:pointer;padding:12px 8px 10px;
-  font-family:'Cinzel',serif;font-size:11px;font-weight:700;letter-spacing:.12em;
-  color:var(--gold2);text-transform:uppercase;
-  display:flex;flex-direction:column;align-items:center;gap:4px;
-  border-right:1px solid rgba(255,215,0,.1);
-  position:relative;transition:color .2s,background .2s;
-}
-.nav-btn:last-child{border-right:none;}
-.nav-btn .nav-icon{font-size:20px;transition:transform .2s;}
-.nav-btn::after{
-  content:'';position:absolute;bottom:-2px;left:0;right:0;height:3px;
-  background:var(--gold);transform:scaleX(0);transition:transform .25s;
-}
-.nav-btn.active{color:var(--gold);background:rgba(255,215,0,.06);}
-.nav-btn.active::after{transform:scaleX(1);}
-.nav-btn.active .nav-icon{transform:scale(1.18);}
-.nav-btn:not(.active):hover{color:#e8c84a;background:rgba(255,215,0,.03);}
 
+.nav-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-btn {
+  flex: 1;
+  min-width: 85px;
+  background: none;
+  border: none;
+  color: #c9a66b;
+  padding: 10px 6px 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.nav-btn .nav-icon {
+  font-size: 26px;
+  transition: all 0.3s ease;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.6));
+}
+
+.nav-btn .nav-label {
+  font-family: 'Cinzel', serif;
+  margin-top: 2px;
+}
+
+/* Hover Effect */
+.nav-btn:hover {
+  color: var(--gold);
+  transform: translateY(-3px);
+}
+
+.nav-btn:hover .nav-icon {
+  transform: scale(1.15);
+}
+
+/* Active State - Premium Glow */
+.nav-btn.active {
+  color: var(--gold);
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+}
+
+.nav-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 55%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--gold), var(--gold), transparent);
+  box-shadow: 0 0 12px var(--gold),
+              0 0 25px var(--gold);
+  border-radius: 2px;
+}
+
+.nav-btn.active .nav-icon {
+  transform: scale(1.25);
+  filter: drop-shadow(0 0 12px var(--gold));
+}
 #menuScreen{background:linear-gradient(180deg,#0a0600,#000);}
 .menu-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;gap:28px;}
 .menu-title{
@@ -289,6 +414,7 @@ body::before{
   margin-bottom: 55px;
   letter-spacing: 0.08em;
   text-shadow: 0 0 25px rgba(255,215,0,0.6);
+  text-align: center;
 }
 
 .games-grid {
@@ -1104,5 +1230,51 @@ footer{position:relative;z-index:10;text-align:center;padding:13px 20px;border-t
   .rocket-flame{left:12px;top:46px;width:38px;height:16px;}
   .crash-boom{font-size:44px;}
   .die{width:78px;height:78px;font-size:50px;}
+
+}
+/* =============== VIP FOOTER - MATCHING YOUR SCREENSHOT =============== */
+.casino-footer {
+  background:linear-gradient(to bottom, #0a0600, #1a1200);
+  padding: 60px 20px 40px;
+  text-align: center;
+  border-top: 3px solid gold;
 }
 
+.footer-bottom p {
+  margin: 10px 0;
+}
+
+.disclaimer {
+  font-size: 12.5px;
+  color: #777;
+  letter-spacing: 0.5px;
+}
+
+.payments {
+  display: flex;
+  justify-content: center;
+  gap: 35px;
+  margin: 20px 0;
+}
+
+.payments img {
+  height: 36px;
+  opacity: 0.9;
+  transition: 0.3s;
+}
+
+.payments img:hover {
+  opacity: 1;
+  transform: scale(1.08);
+}
+
+.copyright {
+  font-size: 11px;
+  color: #555;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .vip-cards { gap: 20px; }
+  .vip-card { width: 100%; max-width: 240px; }
+}
