@@ -547,22 +547,21 @@
     snd.click();
   }
 
-  function bjClear() {
+function bjClear() {
   if (bjPhase === 'play') return;
 
  
   bjBet = 0;
-  playerCards = [];
-  dealerCards = [];
-  playerScore = 0;
-  dealerScore = 0;
-
+  dealerHand = [];
+  playerHand = [];
   bjPhase = 'bet';
 
-  // clear UI
-  byId('player-hand').innerHTML = '';
-  byId('dealer-hand').innerHTML = '';
-  byId('result').textContent = '';
+  // Clear UI
+  byId('dealerCards').innerHTML = '';
+  byId('playerCards').innerHTML = '';
+  byId('dealerScore').textContent = '—';
+  byId('playerScore').textContent = '—';
+  byId('bjMsg').className = 'bj-msg';
 
   updateBjBet();
   setBjPhase('bet');
@@ -572,11 +571,11 @@
 
   function bjDeal() {
     if (bjBet <= 0) {
-      setBjMsg('СНАЧАЛА СДЕЛАЙ СТАВКУ', 'lose');
+      setBjMsg('MAKE A BET', 'lose');
       return;
     }
     if (bjBet > score) {
-      setBjMsg('НЕ ХВАТАЕТ МОНЕТ', 'lose');
+      setBjMsg('NOT ENOUGH MONEY', 'lose');
       return;
     }
 
@@ -874,11 +873,11 @@
 
   function genCrashPoint() {
     const r = Math.random();
-    // Более "ровные" шансы: меньше мгновенных крашей, чаще 1.6x-4x
-    if (r < 0.22) return 1.25 + Math.random() * 0.65; // 1.25x-1.90x
-    if (r < 0.68) return 1.9 + Math.random() * 2.2;   // 1.90x-4.10x
-    if (r < 0.9) return 4.1 + Math.random() * 4.2;    // 4.10x-8.30x
-    return 8.3 + Math.random() * 12.7;                // 8.30x-21.00x
+    
+    if (r < 0.22) return 1.25 + Math.random() * 0.65; 
+    if (r < 0.68) return 1.9 + Math.random() * 2.2;   
+    if (r < 0.9) return 4.1 + Math.random() * 4.2;   
+    return 8.3 + Math.random() * 12.7;                
   }
 
   function explodeRocket() {
@@ -1169,7 +1168,7 @@
   window.diceRoll = diceRoll;
   window.restartGame = restartGame;
 
-  // Floating particles for hero section
+ 
   function createFloatingParticles() {
     const container = byId('floatingParticles');
     if (!container) return;
