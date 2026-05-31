@@ -256,237 +256,169 @@
   <footer><div class="footer-warn">💀 FOR KIDS ONLY · NOT REAL MONEY 💀</div></footer>
 </div>
 
+<!-- ====================== BLACKJACK ====================== -->
 <div class="screen" id="bjScreen">
-   <div class="site-header">
-  <div class="logo-frame">
-    <img class="logo-img" src="images/logos/apollo-royal-logo.png" alt="Apollo Royal">
-  </div>
-</div>
-  <div class="bal-bar">
-    <div class="bal-left">
-      <div class="bal-label">💀 BALANCE</div>
-      <div class="bal-value" id="bjBal">1000</div>
-    </div>
-    <div class="bal-track"><div class="bal-fill" id="bjBalFill" style="width:100%"></div></div>
-    <div class="bal-right">
-      <div class="bal-label">BET</div>
-      <div class="bal-value" id="bjBetShow" style="font-size:16px;color:var(--red2);">0</div>
-    </div>
-  </div>
-  <nav class="nav-menu">
-    <button class="nav-btn" onclick="gotoScreen('menuScreen')"><span class="nav-icon">🏠</span>MENU</button>
-    <button class="nav-btn" onclick="gotoScreen('slotsScreen')"><span class="nav-icon">🎰</span>SLOTS</button>
-    <button class="nav-btn active" onclick="void(0)" style="color:var(--gold);border-bottom:3px solid var(--gold);"><span class="nav-icon">🃏</span>BLACKJACK</button>
-    <button class="nav-btn" onclick="gotoScreen('cfScreen')"><span class="nav-icon">🪙</span>COIN FLIP</button>
-    <button class="nav-btn" onclick="gotoScreen('crashScreen')"><span class="nav-icon">🚀</span>LUCKY JET</button>
-    <button class="nav-btn" onclick="gotoScreen('diceScreen')"><span class="nav-icon">🎲</span>DICE</button>
-  </nav>
-  <div class="bj-body">
-    <div class="bj-section">
-      <div class="bj-label">🤖 DEALER</div>
-      <div class="cards-row" id="dealerCards"></div>
-      <div class="bj-score-display" id="dealerScore">—</div>
-    </div>
-    <div class="bj-msg" id="bjMsg"></div>
-    <div class="bj-section">
-      <div class="bj-label">👤 YOU</div>
-      <div class="cards-row" id="playerCards"></div>
-      <div class="bj-score-display" id="playerScore">—</div>
-    </div>
-    <div class="bj-section">
-      <div class="bj-label">PLACE YOUR BET</div>
-      <div class="bj-chips">
-        <div class="chip c10" onclick="addBet(10)">10</div>
-        <div class="chip c25" onclick="addBet(25)">25</div>
-        <div class="chip c50" onclick="addBet(50)">50</div>
-        <div class="chip c100" onclick="addBet(100)">100</div>
-        <div class="chip c500" onclick="addBet(500)">500</div>
+  <div class="site-header">...your header...</div>
+  
+  <div class="bal-bar"></div>
+  <nav class="nav-menu">...your nav...</nav>
+
+  <div class="game-body bj-body">
+    <div class="game-frame">
+      <div class="dealer-area">
+        <div class="area-label">🤖 DEALER</div>
+        <div class="cards-row" id="dealerCards"></div>
+        <div class="score-display" id="dealerScore">—</div>
       </div>
-      <div class="bj-cur-bet"><span>CURRENT BET</span><span id="bjCurBet">0</span></div>
-    </div>
-    <div class="bj-actions">
-      <button class="bj-btn deal" id="bjDeal" onclick="bjDeal()">🃏 DEAL</button>
-      <button class="bj-btn hit" id="bjHit" onclick="bjHit()" disabled>➕ HIT</button>
-      <button class="bj-btn stand" id="bjStand" onclick="bjStand()" disabled>✋ STAND</button>
-      <button class="bj-btn double" id="bjDouble" onclick="bjDouble()" disabled>×2 DOUBLE</button>
-      <button class="bj-btn clear" id="bjClear" onclick="bjClear()">↺ CLEAR</button>
+
+      <div class="player-area">
+        <div class="area-label">👤 YOU</div>
+        <div class="cards-row" id="playerCards"></div>
+        <div class="score-display" id="playerScore">—</div>
+      </div>
+
+      <div class="bet-panel">
+        <div class="current-bet">CURRENT BET <span id="bjCurBet">0</span></div>
+        <div class="chips" id="bjChips">
+          <div class="chip" data-value="10">10</div>
+          <div class="chip" data-value="25">25</div>
+          <div class="chip" data-value="50">50</div>
+          <div class="chip" data-value="100">100</div>
+          <div class="chip" data-value="500">500</div>
+        </div>
+      </div>
+
+      <div class="bj-actions">
+        <button id="bjDeal" onclick="bjDeal()">🃏 DEAL</button>
+        <button id="bjHit" onclick="bjHit()" disabled>HIT</button>
+        <button id="bjStand" onclick="bjStand()" disabled>STAND</button>
+        <button id="bjDouble" onclick="bjDouble()" disabled>DOUBLE</button>
+        <button id="bjClear" onclick="bjClear()">CLEAR</button>
+      </div>
+
+      <div class="bj-msg" id="bjMsg"></div>
     </div>
   </div>
-  <footer><div class="footer-warn">💀 FOR KIDS ONLY · NOT REAL MONEY 💀</div></footer>
 </div>
 
-<!-- ═══ COIN FLIP SCREEN ═══ -->
+<!-- ====================== COIN FLIP ====================== -->
 <div class="screen" id="cfScreen">
-    <div class="site-header">
-  <div class="logo-frame">
-    <img class="logo-img" src="images/logos/apollo-royal-logo.png" alt="Apollo Royal">
-  </div>
-</div>
-  <div class="bal-bar">
-    <div class="bal-left">
-      <div class="bal-label">💀 BALANCE</div>
-      <div class="bal-value" id="cfBal">1000</div>
-    </div>
-    <div class="bal-track"><div class="bal-fill" id="cfBalFill" style="width:100%"></div></div>
-    <div class="bal-right">
-      <div class="bal-label">STREAK</div>
-      <div class="bal-value" id="cfStreakDisp" style="font-size:16px;color:var(--green);">0</div>
-    </div>
-  </div>
-  <nav class="nav-menu">
-    <button class="nav-btn" onclick="gotoScreen('menuScreen')"><span class="nav-icon">🏠</span>MENU</button>
-    <button class="nav-btn" onclick="gotoScreen('slotsScreen')"><span class="nav-icon">🎰</span>SLOTS</button>
-    <button class="nav-btn" onclick="gotoScreen('bjScreen')"><span class="nav-icon">🃏</span>BLACKJACK</button>
-    <button class="nav-btn active" onclick="void(0)" style="color:var(--gold);border-bottom:3px solid var(--gold);"><span class="nav-icon">🪙</span>COIN FLIP</button>
-    <button class="nav-btn" onclick="gotoScreen('crashScreen')"><span class="nav-icon">🚀</span>LUCKY JET</button>
-    <button class="nav-btn" onclick="gotoScreen('diceScreen')"><span class="nav-icon">🎲</span>DICE</button>
-  </nav>
-  <div class="cf-body">
-    <div class="coin-arena" id="coinArena">
-      <div class="coin-wrap" id="coinWrap">
-        <div class="coin-face coin-heads">🚀</div>
-        <div class="coin-face coin-tails">💥</div>
+  <div class="site-header">...header...</div>
+  <div class="bal-bar"></div>
+  <nav class="nav-menu">...nav...</nav>
+
+  <div class="game-body cf-body">
+    <div class="game-frame">
+      <div class="coin-arena" id="coinArena">
+        <div class="coin-wrap" id="coinWrap">
+          <div class="coin-face coin-heads">🚀</div>
+          <div class="coin-face coin-tails">💥</div>
+        </div>
       </div>
-      <div class="coin-shadow"></div>
+
+      <div class="cf-result" id="cfResult"></div>
+
+      <div class="choose-side">
+        <button class="side-btn" id="cfHeadsBtn" onclick="chooseSide('heads')">🚀 ROCKET</button>
+        <button class="side-btn" id="cfTailsBtn" onclick="chooseSide('tails')">💥 EXPLOSION</button>
+      </div>
+
+      <div class="bet-panel">
+        <div class="current-bet">BET <span id="cfCurBet">0</span></div>
+        <div class="chips">
+          <div class="chip" data-value="10">10</div>
+          <div class="chip" data-value="25">25</div>
+          <div class="chip" data-value="50">50</div>
+          <div class="chip" data-value="100">100</div>
+        </div>
+      </div>
+
+      <button class="big-action-btn" id="cfTossBtn" onclick="cfToss()" disabled>🚀 LAUNCH COIN 🚀</button>
+      
+      <div class="streak-info">STREAK: <span id="cfStreak">0</span> | BEST: <span id="cfBestStreak">0</span></div>
     </div>
-    <div class="cf-result-text" id="cfResult"></div>
-    <div class="cf-choose">
-      <button class="cf-btn" id="cfHeadsBtn" onclick="chooseSide('heads')">
-        <div class="cf-btn-inner"><span class="cf-btn-icon">🚀</span><span class="cf-btn-lbl">РАКЕТА</span></div>
-      </button>
-      <button class="cf-btn" id="cfTailsBtn" onclick="chooseSide('tails')">
-        <div class="cf-btn-inner"><span class="cf-btn-icon">💥</span><span class="cf-btn-lbl">EXPLOSION</span></div>
-      </button>
-    </div>
-    <div class="bj-chips">
-      <div class="chip c10" onclick="cfAddBet(10)">10</div>
-      <div class="chip c25" onclick="cfAddBet(25)">25</div>
-      <div class="chip c50" onclick="cfAddBet(50)">50</div>
-      <div class="chip c100" onclick="cfAddBet(100)">100</div>
-    </div>
-    <div class="bj-cur-bet"><span>BET</span><span id="cfCurBet">0</span></div>
-    <button class="cf-toss-btn" id="cfTossBtn" onclick="cfToss()" disabled>🚀 LAUNCH 🚀</button>
-    <div class="cf-streak">STREAK: <span id="cfStreak">0</span> · BEST: <span id="cfBestStreak">0</span></div>
   </div>
-  <footer><div class="footer-warn">💀 FOR KIDS ONLY · NOT REAL MONEY 💀</div></footer>
 </div>
 
+<!-- ====================== LUCKY JET (CRASH) ====================== -->
 <div class="screen" id="crashScreen">
-   <div class="site-header">
-  <div class="logo-frame">
-    <img class="logo-img" src="images/logos/apollo-royal-logo.png" alt="Apollo Royal">
-  </div>
-</div>
-  <div class="bal-bar">
-    <div class="bal-left">
-      <div class="bal-label">💀 BALANCE</div>
-      <div class="bal-value" id="crashBal">1000</div>
-    </div>
-    <div class="bal-track"><div class="bal-fill" id="crashBalFill" style="width:100%"></div></div>
-    <div class="bal-right">
-      <div class="bal-label">MAX X</div>
-      <div class="bal-value" id="crashBestX" style="font-size:16px;color:var(--green);">1.00x</div>
-    </div>
-  </div>
-  <nav class="nav-menu">
-    <button class="nav-btn" onclick="gotoScreen('menuScreen')"><span class="nav-icon">🏠</span>MENU</button>
-    <button class="nav-btn" onclick="gotoScreen('slotsScreen')"><span class="nav-icon">🎰</span>SLOTS</button>
-    <button class="nav-btn" onclick="gotoScreen('bjScreen')"><span class="nav-icon">🃏</span>BLACKJACK</button>
-    <button class="nav-btn" onclick="gotoScreen('cfScreen')"><span class="nav-icon">🪙</span>COIN FLIP</button>
-    <button class="nav-btn active" onclick="void(0)" style="color:var(--gold);border-bottom:3px solid var(--gold);"><span class="nav-icon">🚀</span>LUCKY JET</button>
-    <button class="nav-btn" onclick="gotoScreen('diceScreen')"><span class="nav-icon">🎲</span>DICE</button>
-  </nav>
-  <div class="crash-body">
-    <div class="crash-top">
+  <div class="site-header">...header...</div>
+  <div class="bal-bar"></div>
+  <nav class="nav-menu">...nav...</nav>
+
+  <div class="game-body crash-body">
+    <div class="game-frame">
       <div class="crash-mult" id="crashMult">1.00x</div>
-      <div class="crash-msg" id="crashMsg">Place your bet and press start</div>
-    </div>
-    <div class="crash-arena">
-      <div class="crash-path"></div>
-      <div class="crash-rocket" id="crashRocket">
-        <img class="jet-rider" src="images/symbols/crash.jpg" alt="Lucky Jet">
+      <div class="crash-msg" id="crashMsg">Place bet and launch</div>
+
+      <div class="crash-arena" id="crashArena">
+        <div class="crash-rocket" id="crashRocket">
+          <img class="jet-rider" src="images/symbols/crash.jpg" alt="Lucky Jet">
+        </div>
+        <div class="crash-boom" id="crashBoom">💥</div>
       </div>
-      <div class="crash-boom" id="crashBoom">💥</div>
+
+      <div class="bet-panel">
+        <div class="current-bet">BET <span id="crashBet">0</span></div>
+        <div class="chips">
+          <div class="chip" data-value="10">10</div>
+          <div class="chip" data-value="25">25</div>
+          <div class="chip" data-value="50">50</div>
+          <div class="chip" data-value="100">100</div>
+          <div class="chip" data-value="500">500</div>
+        </div>
+      </div>
+
+      <div class="crash-actions">
+        <button id="crashStartBtn" onclick="crashStart()">🚀 START FLIGHT</button>
+        <button id="crashCashoutBtn" onclick="crashCashout()" disabled>💰 CASHOUT</button>
+        <button onclick="crashClearBet()">CLEAR</button>
+      </div>
+
+      <div class="crash-history" id="crashHistory"></div>
     </div>
-    <div class="bj-chips">
-      <div class="chip c10" onclick="crashAddBet(10)">10</div>
-      <div class="chip c25" onclick="crashAddBet(25)">25</div>
-      <div class="chip c50" onclick="crashAddBet(50)">50</div>
-      <div class="chip c100" onclick="crashAddBet(100)">100</div>
-      <div class="chip c500" onclick="crashAddBet(500)">500</div>
-    </div>
-    <div class="bj-cur-bet"><span>BET</span><span id="crashBet">0</span></div>
-    <div class="crash-auto">
-      <span class="crash-auto-lbl">AUTO-CASHOUT:</span>
-      <button class="crash-auto-btn" onclick="setCrashAuto(0)">OFF</button>
-      <button class="crash-auto-btn" onclick="setCrashAuto(1.5)">1.5x</button>
-      <button class="crash-auto-btn" onclick="setCrashAuto(2)">2x</button>
-      <button class="crash-auto-btn" onclick="setCrashAuto(3)">3x</button>
-      <span class="crash-auto-current" id="crashAutoDisp">OFF</span>
-    </div>
-    <div class="crash-actions">
-      <button class="crash-btn start" id="crashStartBtn" onclick="crashStart()">🚀 START</button>
-      <button class="crash-btn cashout" id="crashCashoutBtn" onclick="crashCashout()" disabled>💰 CASHOUT</button>
-      <button class="crash-btn clear" id="crashClearBtn" onclick="crashClearBet()">↺ CLEAR</button>
-    </div>
-    <div class="crash-history-title">ROUND HISTORY</div>
-    <div class="crash-history" id="crashHistory"></div>
   </div>
-  <footer><div class="footer-warn">💀 FOR KIDS ONLY · NOT REAL MONEY 💀</div></footer>
 </div>
 
+<!-- ====================== DICE ====================== -->
 <div class="screen" id="diceScreen">
-    <div class="site-header">
-  <div class="logo-frame">
-    <img class="logo-img" src="images/logos/apollo-royal-logo.png" alt="Apollo Royal">
+  <div class="site-header">...header...</div>
+  <div class="bal-bar"></div>
+  <nav class="nav-menu">...nav...</nav>
+
+  <div class="game-body dice-body">
+    <div class="game-frame">
+      <div class="dice-title">DICE DUEL</div>
+      
+      <div class="dice-container">
+        <div class="dice-row">
+          <div class="die" id="die1">⚀</div>
+          <div class="die" id="die2">⚀</div>
+        </div>
+        <div class="dice-sum" id="diceSum">SUM: —</div>
+      </div>
+
+      <div class="dice-choices">
+        <button class="dice-choice" id="diceLowBtn" onclick="diceChoose('low')">LOW (2-6) ×2</button>
+        <button class="dice-choice" id="diceSevenBtn" onclick="diceChoose('seven')">EXACT 7 ×5</button>
+        <button class="dice-choice" id="diceHighBtn" onclick="diceChoose('high')">HIGH (8-12) ×2</button>
+      </div>
+
+      <div class="bet-panel">
+        <div class="current-bet">BET <span id="diceBet">0</span></div>
+        <div class="chips">
+          <div class="chip" data-value="10">10</div>
+          <div class="chip" data-value="25">25</div>
+          <div class="chip" data-value="50">50</div>
+          <div class="chip" data-value="100">100</div>
+        </div>
+      </div>
+
+      <button class="big-action-btn" id="diceRollBtn" onclick="diceRoll()" disabled>🎲 ROLL DICE</button>
+
+      <div class="streak-info">STREAK: <span id="diceStreak">0</span> | BEST: <span id="diceBestStreak">0</span></div>
+    </div>
   </div>
-</div>
-  <div class="bal-bar">
-    <div class="bal-left">
-      <div class="bal-label">💀 BALANCE</div>
-      <div class="bal-value" id="diceBal">1000</div>
-    </div>
-    <div class="bal-track"><div class="bal-fill" id="diceBalFill" style="width:100%"></div></div>
-    <div class="bal-right">
-      <div class="bal-label">STREAK</div>
-      <div class="bal-value" id="diceStreakDisp" style="font-size:16px;color:var(--green);">0</div>
-    </div>
-  </div>
-  <nav class="nav-menu">
-    <button class="nav-btn" onclick="gotoScreen('menuScreen')"><span class="nav-icon">🏠</span>MENU</button>
-    <button class="nav-btn" onclick="gotoScreen('slotsScreen')"><span class="nav-icon">🎰</span>SLOTS</button>
-    <button class="nav-btn" onclick="gotoScreen('bjScreen')"><span class="nav-icon">🃏</span>BLACKJACK</button>
-    <button class="nav-btn" onclick="gotoScreen('cfScreen')"><span class="nav-icon">🪙</span>COIN FLIP</button>
-    <button class="nav-btn" onclick="gotoScreen('crashScreen')"><span class="nav-icon">🚀</span>LUCKY JET</button>
-    <button class="nav-btn active" onclick="void(0)" style="color:var(--gold);border-bottom:3px solid var(--gold);"><span class="nav-icon">🎲</span>DICE</button>
-  </nav>
-  <div class="dice-body">
-    <div class="dice-title">DICE DUEL</div>
-    <div class="dice-row">
-      <div class="die" id="die1">⚀</div>
-      <div class="die" id="die2">⚀</div>
-    </div>
-    <div class="dice-sum" id="diceSum">SUM: —</div>
-    <div class="dice-result" id="diceResult">Choose outcome and roll dice</div>
-    <div class="dice-choices">
-      <button class="dice-choice" id="diceLowBtn" onclick="diceChoose('low')">LOW 2-6 · x2</button>
-      <button class="dice-choice" id="diceSevenBtn" onclick="diceChoose('seven')">EXACT 7 · x5</button>
-      <button class="dice-choice" id="diceHighBtn" onclick="diceChoose('high')">HIGH 8-12 · x2</button>
-    </div>
-    <div class="bj-chips">
-      <div class="chip c10" onclick="diceAddBet(10)">10</div>
-      <div class="chip c25" onclick="diceAddBet(25)">25</div>
-      <div class="chip c50" onclick="diceAddBet(50)">50</div>
-      <div class="chip c100" onclick="diceAddBet(100)">100</div>
-    </div>
-    <div class="bj-cur-bet"><span>BET</span><span id="diceBet">0</span></div>
-    <div class="crash-actions">
-      <button class="crash-btn start" id="diceRollBtn" onclick="diceRoll()" disabled>🎲 ROLL</button>
-      <button class="crash-btn clear" onclick="diceClearBet()">↺ CLEAR</button>
-    </div>
-    <div class="cf-streak">STREAK: <span id="diceStreak">0</span> · BEST: <span id="diceBestStreak">0</span></div>
-  </div>
-  <footer><div class="footer-warn">💀 FOR KIDS ONLY · NOT REAL MONEY 💀</div></footer>
 </div>
 
 </body>
